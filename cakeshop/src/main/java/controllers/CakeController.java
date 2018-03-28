@@ -7,15 +7,11 @@ import db.DBHelper;
 import db.Seeds;
 import model.Cake;
 import model.CakeType;
-import model.Shop;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import javax.print.DocFlavor;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class CakeController {
@@ -41,21 +37,21 @@ public class CakeController {
                 return new ModelAndView(model, "templates/layout.vtl");
             }, new VelocityTemplateEngine());
 
-        get("/cakeshop/newcake", (req, res)->{
+        get("/cakeshop/updatecake", (req, res)->{
             HashMap<String, Object> model = new HashMap<>();
             List<Cake> cakes = DBHelper.getAll(Cake.class);
             List<CakeType> cakeTypes = DBHelper.allCakeTypes();
             model.put("cakes", cakes);
-            model.put("template", "templates/create.vtl");
+            model.put("template", "templates/update.vtl");
             model.put("caketypes", cakeTypes);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        post ("/cakeshop/newcake", (req, res) -> {
+        post ("/cakeshop/updatecake", (req, res) -> {
             int quantity = Integer.parseInt(req.queryParams("quantity"));
             String strcaketype = req.queryParams("caketype");
             CakeType enumCakeType = CakeType.valueOf(strcaketype);
-            Cake cake = new Cake(enumCakeType, quantity, true);
+            Cake cake = new Cake(enumCakeType, quantity,15.00, true);
             DBHelper.saveOrUpdate(cake);
             res.redirect("/home");
             return null;

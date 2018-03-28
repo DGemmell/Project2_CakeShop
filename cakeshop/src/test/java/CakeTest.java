@@ -11,7 +11,7 @@ public class CakeTest {
 
     @Before
     public void before(){
-        this.cake = new Cake(CakeType.BROWNIE, 40, true);
+        this.cake = new Cake(CakeType.BROWNIE, 40,10.00, true);
 
     }
 
@@ -24,6 +24,11 @@ public class CakeTest {
     @Test
     public void canGetQuantity(){
         assertEquals(40, cake.getQuantity());
+    }
+
+    @Test
+    public void canGetPrice(){
+        assertEquals(10.00, cake.getPrice(),0.1);
     }
 
     @Test

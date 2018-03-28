@@ -14,11 +14,12 @@ public class Runner {
 
         DBHelper.deleteAll(Shop.class);
         DBHelper.deleteAll(Cake.class);
-        Cake cake1 = new Cake(CakeType.BROWNIE,40,true);
-        Cake cake2 = new Cake(CakeType.MILLIONAIRES_SHORTBREAD, 20, false);
-        Cake cake3 = new Cake(CakeType.ROCKY_ROAD, 25, true);
-        Cake cake4 = new Cake(CakeType.CARROT_CAKE,12, true);
-        Cake cake5 = new Cake(CakeType.CUP_CAKES, 100, true);
+        Cake cake1 = new Cake(CakeType.BROWNIE,50,10.00,true);
+        Cake cake2 = new Cake(CakeType.MILLIONAIRES_SHORTBREAD, 20,15.00, false);
+        Cake cake3 = new Cake(CakeType.ROCKY_ROAD, 25,8.00, true);
+        Cake cake4 = new Cake(CakeType.CARROT_CAKE,12,18.00, true);
+        Cake cake5 = new Cake(CakeType.CUP_CAKES, 110,3.00, true);
+        cake5.SellQuantity(20);
         DBHelper.saveOrUpdate(cake1);
         DBHelper.saveOrUpdate(cake2);
         DBHelper.saveOrUpdate(cake3);

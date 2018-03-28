@@ -9,15 +9,17 @@ public class Cake {
     private int id;
     private CakeType cakeType;
     private int quantity;
+    private double price;
     private boolean available;
     private Shop shop;
 
     public Cake() {
     }
 
-    public Cake(CakeType cakeType, int quantity, boolean available) {
+    public Cake(CakeType cakeType, int quantity, double price, boolean available) {
         this.cakeType = cakeType;
         this.quantity = quantity;
+        this.price = price;
         this.available = available;
         this.shop = null;
 
@@ -53,6 +55,15 @@ public class Cake {
         this.quantity = quantity;
     }
 
+    @Column(name = "price")
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Column(name = "available")
     public boolean isAvailable() {
         return available;
@@ -62,15 +73,6 @@ public class Cake {
         this.available = available;
     }
 
-//    Add a method to see all cake orders
-//    public int getAllCakeOrders () {
-//        return this.cakeOrders();
-//    }
-//
-//    public void setCakeOrders(int cakeOrders) {
-//        this.cakeOrders = cakeOrders;
-//    }
-
     @ManyToOne
     @JoinColumn(name ="shop")
     public Shop getShop() {
@@ -79,5 +81,16 @@ public class Cake {
 
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+
+    public int SellQuantity(int count){
+        this.quantity = quantity - count;
+        return quantity;
+
+    }
+
+    public int BuyQuantity(int count){
+        this.quantity = quantity + count;
+        return quantity;
     }
 }
