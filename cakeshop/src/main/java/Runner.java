@@ -1,7 +1,8 @@
 import db.DBHelper;
-import model.Cake;
+import model.Stock;
 import model.CakeType;
 import model.Shop;
+import model.Stock;
 import org.hibernate.annotations.SourceType;
 
 import java.util.ArrayList;
@@ -13,12 +14,12 @@ public class Runner {
     public static void main(String[] args) {
 
         DBHelper.deleteAll(Shop.class);
-        DBHelper.deleteAll(Cake.class);
-        Cake cake1 = new Cake(CakeType.BROWNIE,50,10.00,true);
-        Cake cake2 = new Cake(CakeType.MILLIONAIRES_SHORTBREAD, 20,15.00, false);
-        Cake cake3 = new Cake(CakeType.ROCKY_ROAD, 25,8.00, true);
-        Cake cake4 = new Cake(CakeType.CARROT_CAKE,12,18.00, true);
-        Cake cake5 = new Cake(CakeType.CUP_CAKES, 110,3.00, true);
+        DBHelper.deleteAll(Stock.class);
+        Stock cake1 = new Stock(CakeType.BROWNIE,50,10.00,true);
+        Stock cake2 = new Stock(CakeType.MILLIONAIRES_SHORTBREAD, 20,15.00, false);
+        Stock cake3 = new Stock(CakeType.ROCKY_ROAD, 25,8.00, true);
+        Stock cake4 = new Stock(CakeType.CARROT_CAKE,12,18.00, true);
+        Stock cake5 = new Stock(CakeType.CUP_CAKES, 110,3.00, true);
         cake5.SellQuantity(20);
         DBHelper.saveOrUpdate(cake1);
         DBHelper.saveOrUpdate(cake2);
@@ -26,7 +27,7 @@ public class Runner {
         DBHelper.saveOrUpdate(cake4);
         DBHelper.saveOrUpdate(cake5);
 
-        List<Cake> cakes = DBHelper.getAll(Cake.class);
+        List<Stock> cakes = DBHelper.getAll(Stock.class);
 
 //        cakes.add(cake1);
 //        cakes.add(cake2);

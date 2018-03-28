@@ -1,8 +1,9 @@
 package db;
 
-import model.Cake;
+import model.Stock;
 import model.CakeType;
 import model.Shop;
+import model.Stock;
 
 import java.util.List;
 
@@ -11,26 +12,26 @@ public class Seeds {
     public static void seedData() {
 
         DBHelper.deleteAll(Shop.class);
-        DBHelper.deleteAll(Cake.class);
-        Cake cake1 = new Cake(CakeType.BROWNIE,40,10.00,true);
-        Cake cake2 = new Cake(CakeType.MILLIONAIRES_SHORTBREAD, 20,20.00, false);
-        Cake cake3 = new Cake(CakeType.ROCKY_ROAD, 25,8.00, true);
-        Cake cake4 = new Cake(CakeType.CARROT_CAKE,12,18.00, true);
-        Cake cake5 = new Cake(CakeType.CUP_CAKES, 100,3.00, true);
+        DBHelper.deleteAll(Stock.class);
+        Stock cake1 = new Stock(CakeType.BROWNIE,40,10.00,true);
+        Stock cake2 = new Stock(CakeType.MILLIONAIRES_SHORTBREAD, 20,20.00, false);
+        Stock cake3 = new Stock(CakeType.ROCKY_ROAD, 25,8.00, true);
+        Stock cake4 = new Stock(CakeType.CARROT_CAKE,12,18.00, true);
+        Stock cake5 = new Stock(CakeType.CUP_CAKES, 100,3.00, true);
         DBHelper.saveOrUpdate(cake1);
         DBHelper.saveOrUpdate(cake2);
         DBHelper.saveOrUpdate(cake3);
         DBHelper.saveOrUpdate(cake4);
         DBHelper.saveOrUpdate(cake5);
 
-        List<Cake> cakes = DBHelper.getAll(Cake.class);
+        List<Stock> cakes = DBHelper.getAll(Stock.class);
 
 //        cakes.add(cake1);
 //        cakes.add(cake2);
 //        cakes.add(cake3);
 //        cakes.add(cake4);
 
-        Shop shop = new Shop("Betty Browns",cakes);
+        Shop shop = new Shop("Betty Browns", cakes);
         cake1.setShop(shop);
         cake2.setShop(shop);
         cake3.setShop(shop);

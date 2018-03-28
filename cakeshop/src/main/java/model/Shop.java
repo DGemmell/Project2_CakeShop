@@ -11,12 +11,12 @@ public class Shop {
 
     private int id;
     private String name;
-    private List<Cake> cakes;
+    private List<Stock> cakes;
 
     public Shop() {
     }
 
-    public Shop(String name, List<Cake> cakes) {
+    public Shop(String name, List<Stock> cakes) {
         this.name = name;
         this.cakes = cakes;
     }
@@ -42,11 +42,11 @@ public class Shop {
     }
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "shop")
-    public List<Cake> getCakes() {
+    public List<Stock> getCakes() {
         return cakes;
     }
 
-    public void setCakes(List<Cake> cakes) {
+    public void setCakes(List<Stock> cakes) {
         this.cakes = cakes;
     }
 

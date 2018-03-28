@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="cakes")
-public class Cake {
+public class Stock {
 
     private int id;
     private CakeType cakeType;
@@ -13,10 +13,10 @@ public class Cake {
     private boolean available;
     private Shop shop;
 
-    public Cake() {
+    public Stock() {
     }
 
-    public Cake(CakeType cakeType, int quantity, double price, boolean available) {
+    public Stock(CakeType cakeType, int quantity, double price, boolean available) {
         this.cakeType = cakeType;
         this.quantity = quantity;
         this.price = price;
@@ -94,3 +94,4 @@ public class Cake {
         return quantity;
     }
 }
+

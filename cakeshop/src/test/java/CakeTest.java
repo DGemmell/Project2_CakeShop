@@ -1,5 +1,6 @@
-import model.Cake;
+import model.Stock;
 import model.CakeType;
+import model.Stock;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,11 +8,11 @@ import static org.junit.Assert.assertEquals;
 
 public class CakeTest {
 
-    private Cake cake;
+    private Stock cake;
 
     @Before
     public void before(){
-        this.cake = new Cake(CakeType.BROWNIE, 40,10.00, true);
+        this.cake = new Stock(CakeType.BROWNIE, 40,10.00, true);
 
     }
 
