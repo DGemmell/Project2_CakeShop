@@ -1,11 +1,13 @@
 package db;
 
+import model.CakeType;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.eclipse.jetty.util.LazyList.getList;
@@ -110,12 +112,19 @@ public class DBHelper {
         session = HibernateUtil.getSessionFactory().openSession();
         List<T> results = null;
         Criteria criteria = session.createCriteria(classType);
-        results = getList(criteria);
+        results = getSet(criteria);
         return results;
 
     }
+    
+    public static List<CakeType> allCakeTypes() {
+        ArrayList<CakeType> cakeTypes = new ArrayList<>();
+        for (CakeType caketype: CakeType.values()) {
+            cakeTypes.add(caketype);
+        }
+        return cakeTypes;
 
-
+    }
 
 
 }

@@ -1,9 +1,12 @@
-<p class="pageHeader">Add a New Cake</p>
+<h2><p class="pageHeader">Add a New Cake</p></h2>
 
 <form action="/cakeshop/newcake" method="post">
-    <label for="CakeType">CakeType:</label>
-    <input class="inputbox" type="text" name="cakeType" required="true">
 
+    <label for="CakeType">CakeType:</label>
+    <select id="CakeType" name="cakeType" required="true">
+        #foreach($cakeType in $caketypes)
+        <option value = "$cakeType">$cakeType</option>
+        #end
     <label for="Quantity">Portions:</label>
     <input class="inputbox" type="text" name="quantity" required="true">
 

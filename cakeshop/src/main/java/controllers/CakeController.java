@@ -44,8 +44,10 @@ public class CakeController {
         get("/cakeshop/newcake", (req, res)->{
             HashMap<String, Object> model = new HashMap<>();
             List<Cake> cakes = DBHelper.getAll(Cake.class);
+            List<CakeType> cakeTypes = DBHelper.allCakeTypes();
             model.put("cakes", cakes);
             model.put("template", "templates/create.vtl");
+            model.put("caketypes", cakeTypes);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 

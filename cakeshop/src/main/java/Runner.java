@@ -46,9 +46,10 @@ public class Runner {
         DBHelper.saveOrUpdate(cake4);
         DBHelper.saveOrUpdate(cake5);
 
+        List<CakeType> allCakeTypes = DBHelper.allCakeTypes();
 
 
 
-        System.out.println();
+
     }
 }
