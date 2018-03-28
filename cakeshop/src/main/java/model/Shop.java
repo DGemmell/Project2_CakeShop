@@ -1,18 +1,29 @@
 package model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
+@Entity
+@Table(name = "shop")
 public class Shop {
 
     private int id;
     private String name;
-    private ArrayList<Cake> cakes;
+    private List<Cake> cakes;
 
-    public Shop(String name, ArrayList<Cake> cakes) {
+    public Shop() {
+    }
+
+    public Shop(String name, List<Cake> cakes) {
         this.name = name;
         this.cakes = cakes;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -21,6 +32,7 @@ public class Shop {
         this.id = id;
     }
 
+    @Column(name ="name")
     public String getName() {
         return name;
     }
@@ -29,18 +41,19 @@ public class Shop {
         this.name = name;
     }
 
-    public ArrayList<Cake> getCakes() {
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "shop")
+    public List<Cake> getCakes() {
         return cakes;
     }
 
-    public void setCakes(ArrayList<Cake> cakes) {
+    public void setCakes(List<Cake> cakes) {
         this.cakes = cakes;
     }
 
 
-    public void updateName() {
-        this.name = name;
-    }
+//    public void updateName() {
+//        this.name = name;
+//    }
 }
 
 
