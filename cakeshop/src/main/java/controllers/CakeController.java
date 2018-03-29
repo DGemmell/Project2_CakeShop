@@ -95,21 +95,20 @@ public class CakeController {
         }, new VelocityTemplateEngine());
 
 
-        post ("/cakeshop/updatecake", (req, res) -> {
-            int quantity = Integer.parseInt(req.queryParams("quantity"));
-            String strcaketype = req.queryParams("caketype");
-            CakeType enumCakeType = CakeType.valueOf(strcaketype);
-            Stock cake = new Stock("brownie", quantity,15.00, true);
-            DBHelper.saveOrUpdate(cake);
-            res.redirect("/home");
-            return null;
-        }, new VelocityTemplateEngine());
+//        post ("/cakeshop/updatecake", (req, res) -> {
+//            int quantity = Integer.parseInt(req.queryParams("quantity"));
+//            String strcaketype = req.queryParams("caketype");
+//            CakeType enumCakeType = CakeType.valueOf(strcaketype);
+//            Stock cake = new Stock("brownie", quantity,15.00, true);
+//            DBHelper.saveOrUpdate(cake);
+//            res.redirect("/home");
+//            return null;
+//        }, new VelocityTemplateEngine());
 
         post ("/cakeshop/:id/edit", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Stock stock = DBHelper.find(Stock.class, intId);
-            int stockId = Integer.parseInt(req.queryParams("stock"));
             String cakeType = req.queryParams("cakeType");
             int quantity = Integer.parseInt(req.queryParams("quantity"));
             double price = Double.parseDouble(req.queryParams("price"));
@@ -121,6 +120,15 @@ public class CakeController {
             res.redirect("/cakeshop");
             return null;
 
+        }, new VelocityTemplateEngine());
+
+        post ("/cakeshop/:id/delete", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Stock stock = DBHelper.find(Stock.class, intId);
+            DBHelper.delete(stock);
+            res.redirect("/cakeshop");
+            return null;
         }, new VelocityTemplateEngine());
 
 
