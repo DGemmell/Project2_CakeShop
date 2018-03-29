@@ -29,7 +29,7 @@ public class CakeController {
             return new ModelAndView(model, "templates/layout.vtl");
              }, new VelocityTemplateEngine());
 
-
+//Home page
             get("/cakeshop", (req, res)->{
                 HashMap<String, Object> model = new HashMap<String, Object>();
                 List<Stock> stock = DBHelper.getAll(Stock.class);
@@ -48,6 +48,7 @@ public class CakeController {
 //            return new ModelAndView(model, "templates/layout.vtl");
 //        }, new VelocityTemplateEngine());
 
+//add a new cake from cake shop
         get("/cakeshop/newcake", (req, res)->{
             HashMap<String, Object> model = new HashMap<>();
             List<Stock> stock = DBHelper.getAll(Stock.class);
@@ -58,7 +59,7 @@ public class CakeController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-
+//updating a cake
         get("/cakeshop/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
