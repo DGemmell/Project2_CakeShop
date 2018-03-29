@@ -21,7 +21,7 @@ public class CakeController {
 
         Seeds.seedData();
 
-//        staticFileLocation("/public");
+        staticFileLocation("/public");
 
            get("/home", (req, res)->{
             HashMap<String, Object> model = new HashMap<String, Object>();
