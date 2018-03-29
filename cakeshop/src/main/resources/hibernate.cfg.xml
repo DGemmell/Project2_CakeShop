@@ -15,7 +15,7 @@
         <property name="show_sql">true</property>
 
         <mapping class = "model.Shop"/>
-        <mapping class = "model.Cake"/>
+        <mapping class = "model.Stock"/>
 
     </session-factory>
 </hibernate-configuration>

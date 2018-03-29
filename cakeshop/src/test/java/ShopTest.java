@@ -21,11 +21,11 @@ public class ShopTest {
 
     @Before
     public void before(){
-        cake1 = new Stock(CakeType.BROWNIE,40,10.00,true);
-        cake2 = new Stock(CakeType.MILLIONAIRES_SHORTBREAD, 20,20.00, true);
-        cake3 = new Stock(CakeType.ROCKY_ROAD, 25,8.00, true);
-        cake4 = new Stock(CakeType.CARROT_CAKE,12,18.00, true);
-        cake5 = new Stock(CakeType.CUP_CAKES, 100,3.00, true);
+        cake1 = new Stock("BROWNIE",40,10.00,true);
+        cake2 = new Stock("MILLIONAIRES_SHORTBREAD", 20,20.00, true);
+        cake3 = new Stock("ROCKY_ROAD", 25,8.00, true);
+        cake4 = new Stock("CARROT_CAKE",12,18.00, true);
+        cake5 = new Stock("CUP_CAKES", 100,3.00, true);
         ArrayList<Stock> cakes = new ArrayList();
         cakes.add(cake1);
         cakes.add(cake2);

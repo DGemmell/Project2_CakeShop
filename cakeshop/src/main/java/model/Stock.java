@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Stock {
 
     private int id;
-    private CakeType cakeType;
+    private String cakeType;
     private int quantity;
     private double price;
     private boolean available;
@@ -16,7 +16,7 @@ public class Stock {
     public Stock() {
     }
 
-    public Stock(CakeType cakeType, int quantity, double price, boolean available) {
+    public Stock(String cakeType, int quantity, double price, boolean available) {
         this.cakeType = cakeType;
         this.quantity = quantity;
         this.price = price;
@@ -37,12 +37,13 @@ public class Stock {
         this.id = id;
     }
 
+
     @Column(name = "caketype")
-    public CakeType getCakeType() {
+    public String getCakeType() {
         return cakeType;
     }
 
-    public void setCakeType(CakeType cakeType) {
+    public void setCakeType(String cakeType) {
         this.cakeType = cakeType;
     }
 

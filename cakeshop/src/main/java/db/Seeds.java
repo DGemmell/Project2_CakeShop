@@ -13,11 +13,11 @@ public class Seeds {
 
         DBHelper.deleteAll(Shop.class);
         DBHelper.deleteAll(Stock.class);
-        Stock cake1 = new Stock(CakeType.BROWNIE,40,10.00,true);
-        Stock cake2 = new Stock(CakeType.MILLIONAIRES_SHORTBREAD, 20,20.00, false);
-        Stock cake3 = new Stock(CakeType.ROCKY_ROAD, 25,8.00, true);
-        Stock cake4 = new Stock(CakeType.CARROT_CAKE,12,18.00, true);
-        Stock cake5 = new Stock(CakeType.CUP_CAKES, 100,3.00, true);
+        Stock cake1 = new Stock("Brownie",40,10.00,true);
+        Stock cake2 = new Stock("Millionaires Shortbread", 20,20.00, false);
+        Stock cake3 = new Stock("Rocky Road", 25,8.00, true);
+        Stock cake4 = new Stock("Carrot Cake",12,18.00, true);
+        Stock cake5 = new Stock("Cup Cakes", 100,3.00, true);
         DBHelper.saveOrUpdate(cake1);
         DBHelper.saveOrUpdate(cake2);
         DBHelper.saveOrUpdate(cake3);

@@ -1,0 +1,18 @@
+<p class="pageHeader">Update Cake</p>
+
+<form action="/cakeshop" method="post">
+
+
+    <label for="caketype">caketype:</label>
+    <input type="number" name="salary" required="true" class="inputbox" value="$stock.getCakeType()">
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="budget" required="true" class="inputbox" value="$stock.getQuantity()">
+
+    <label for="price">Price(£):</label>
+    <input type="number" name="budget" required="true" class="inputbox" value="$stock.getPrice()">
+
+
+<input type="submit" value="Save" class="button">
+</form>
+<a href="/cakeshop/$stock.getId()" class="button center">Cancel</a>

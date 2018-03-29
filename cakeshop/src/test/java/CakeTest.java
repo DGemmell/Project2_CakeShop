@@ -12,13 +12,13 @@ public class CakeTest {
 
     @Before
     public void before(){
-        this.cake = new Stock(CakeType.BROWNIE, 40,10.00, true);
+        this.cake = new Stock("BROWNIE", 40,10.00, true);
 
     }
 
     @Test
     public void canGetCakeType(){
-        assertEquals(CakeType.BROWNIE, cake.getCakeType());
+        assertEquals("BROWNIE", cake.getCakeType());
 
     }
 

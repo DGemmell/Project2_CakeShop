@@ -1,0 +1,25 @@
+
+<p class="pageHeader">Betty Browns</p>
+<div class="container">
+    <table>
+        <tr>
+            <th>Cake Type</th>
+            <th>Quantity</th>
+            <th>Price (£)</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>$stock.getCakeType()</td>
+            <td>$stock.getQuantity()</td>
+            <td>$stock.getPrice()</td>
+            <td><a href="/cakeshop/$stock.getId()" class="button center">Details</a></td>
+        <td>
+        <tr>
+    </table>
+</div>
+
+<a href="/cakeshop/$stock.getId()/edit" class="button center">Edit</a>
+<form action="/cakeshop/$stock.getId()/delete" method="post">
+    <input type="submit" value="Delete" class="button center">
+</form>
+<a href="/cakeshop" class="button center">Back to list</a>

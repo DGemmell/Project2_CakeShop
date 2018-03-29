@@ -12,6 +12,7 @@ import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class CakeController {
@@ -20,7 +21,7 @@ public class CakeController {
 
         Seeds.seedData();
 
-        staticFileLocation("/public");
+//        staticFileLocation("/public");
 
            get("/home", (req, res)->{
             HashMap<String, Object> model = new HashMap<String, Object>();
@@ -31,34 +32,95 @@ public class CakeController {
 
             get("/cakeshop", (req, res)->{
                 HashMap<String, Object> model = new HashMap<String, Object>();
-                List<Stock> cakes = DBHelper.getAll(Stock.class);
-                model.put("cakes", cakes);
-                model.put("template", "templates/index.vtl");
+                List<Stock> stock = DBHelper.getAll(Stock.class);
+                model.put("stock", stock);
+                model.put("template", "templates/stock/index.vtl");
                 return new ModelAndView(model, "templates/layout.vtl");
             }, new VelocityTemplateEngine());
 
-        get("/cakeshop/updatecake", (req, res)->{
+//        get("/cakeshop/updatecake", (req, res)->{
+//            HashMap<String, Object> model = new HashMap<>();
+//            List<Stock> cakes = DBHelper.getAll(Stock.class);
+//            List<CakeType> cakeTypes = DBHelper.allCakeTypes();
+//            model.put("cakes", cakes);
+//            model.put("template", "templates/stock/update.vtl");
+//            model.put("caketypes", cakeTypes);
+//            return new ModelAndView(model, "templates/layout.vtl");
+//        }, new VelocityTemplateEngine());
+
+        get("/cakeshop/newcake", (req, res)->{
             HashMap<String, Object> model = new HashMap<>();
-            List<Stock> cakes = DBHelper.getAll(Stock.class);
+            List<Stock> stock = DBHelper.getAll(Stock.class);
             List<CakeType> cakeTypes = DBHelper.allCakeTypes();
-            model.put("cakes", cakes);
-            model.put("template", "templates/update.vtl");
+            model.put("stock", stock);
+            model.put("template", "templates/stock/create.vtl");
             model.put("caketypes", cakeTypes);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+
+        get("/cakeshop/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Stock stock = DBHelper.find(Stock.class, intId);
+            Map<String, Object> model = new HashMap<>();
+            model.put("template", "templates/stock/show.vtl");
+            model.put("stock", stock);
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        get("/cakeshop/:id/edit", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Stock stock = DBHelper.find(Stock.class, intId);
+            Map<String, Object> model = new HashMap<>();
+            model.put("stock", stock);
+            model.put("template", "templates/stock/edit.vtl");
+            model.put("stock", stock);
+
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+        post ("/cakeshop", (req, res) -> {
+            String cakeType = req.queryParams("cakeType");
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
+            double price = Double.parseDouble(req.queryParams("price"));
+            Stock cake = new Stock(cakeType, quantity, price, true);
+            DBHelper.saveOrUpdate(cake);
+            res.redirect("/cakeshop");
+            return null;
+        }, new VelocityTemplateEngine());
+
 
         post ("/cakeshop/updatecake", (req, res) -> {
             int quantity = Integer.parseInt(req.queryParams("quantity"));
             String strcaketype = req.queryParams("caketype");
             CakeType enumCakeType = CakeType.valueOf(strcaketype);
-            Stock cake = new Stock(enumCakeType, quantity,15.00, true);
+            Stock cake = new Stock("brownie", quantity,15.00, true);
             DBHelper.saveOrUpdate(cake);
             res.redirect("/home");
             return null;
         }, new VelocityTemplateEngine());
 
+        post ("/cakeshop/:id/edit", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Stock stock = DBHelper.find(Stock.class, intId);
+            int stockId = Integer.parseInt(req.queryParams("stock"));
+            String cakeType = req.queryParams("cakeType");
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
+            double price = Double.parseDouble(req.queryParams("price"));
 
+            stock.setCakeType(cakeType);
+            stock.setQuantity(quantity);
+            stock.setPrice(price);
+            DBHelper.saveOrUpdate(stock);
+            res.redirect("/cakeshop");
+            return null;
 
+        }, new VelocityTemplateEngine());
 
 
 
