@@ -16,7 +16,7 @@ public class Runner {
         DBHelper.deleteAll(Shop.class);
         DBHelper.deleteAll(Stock.class);
         Stock cake1 = new Stock("BROWNIE",50,10.00,true);
-        Stock cake2 = new Stock("MILLIONAIRES_SHORTBREAD", 20,15.00, false);
+        Stock cake2 = new Stock("MILLIONAIRES_SHORTBREAD", 0,15.00, false);
         Stock cake3 = new Stock("ROCKY_ROAD", 25,8.00, true);
         Stock cake4 = new Stock("CARROT_CAKE",12,18.00, true);
         Stock cake5 = new Stock("CUP_CAKES", 110,3.00, true);
